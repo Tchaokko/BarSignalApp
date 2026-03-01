@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as SecureStore from 'expo-secure-store';
 
-export const API_BASE_URL = 'http://localhost:5205';
+export const API_BASE_URL = 'http://192.168.1.101:5205';
 export const TOKEN_KEY = 'auth_token';
 
 const client = axios.create({
