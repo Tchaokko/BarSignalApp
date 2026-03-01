@@ -28,12 +28,6 @@ export default function RegisterScreen() {
       const res = await register({ email, password, displayName: displayName || null });
       setToken(res.data.token);
     } catch (e: any) {
-      console.error('[Register] error:', JSON.stringify({
-        message: e?.message,
-        code: e?.code,
-        status: e?.response?.status,
-        data: e?.response?.data,
-      }, null, 2));
       const detail = e?.response?.data?.message ?? e?.message ?? 'Please try again.';
       Alert.alert('Registration failed', detail);
     } finally {
