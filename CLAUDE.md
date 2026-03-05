@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 BarSignalApp — a React Native Expo (managed workflow) + TypeScript mobile application (iOS & Android).
 
-Users can register, manage their profile, and add/remove friends.
+Users can register, manage their profile, and add/remove friends. Once registered the user can sent a notification to their friend to go grab a bear. 
 
 ## Common Commands
 
@@ -40,7 +40,7 @@ src/
 ├── types/api.ts               # TypeScript interfaces for all API request/response types
 ├── api/
 │   ├── client.ts              # Axios instance with JWT interceptors
-│   ├── auth.ts                # register(), googleAuth()
+│   ├── auth.ts                # register(), login(), googleAuth()
 │   ├── friends.ts             # getFriends(), addFriend(), removeFriend()
 │   └── profile.ts             # getProfile(), updateProfile()
 ├── store/
@@ -63,7 +63,7 @@ src/
 4. Logout (`clearToken()`) → token deleted from SecureStore → navigator returns to Register.
 5. 401 response from API → Axios interceptor auto-deletes token from SecureStore.
 
-> There is no email/password login endpoint in the API. Auth is via `/auth/register` (email+password) or `/auth/google` (Google ID token).
+> Auth is via `/auth/register` (create account), `/auth/login` (email+password), or `/auth/google` (Google ID token).
 
 ## API Reference
 
@@ -72,6 +72,7 @@ Base URL is set in `src/api/client.ts` (`API_BASE_URL`). All endpoints require a
 | Method | Path | Description |
 |--------|------|-------------|
 | POST | `/auth/register` | Create account with email, password, displayName |
+| POST | `/auth/login` | Sign in with email and password, returns JWT |
 | POST | `/auth/google` | Sign in / register with Google ID token |
 | GET | `/friends` | List current user's friends |
 | POST | `/friends/{friendId}` | Add a friend by UUID |
@@ -80,7 +81,7 @@ Base URL is set in `src/api/client.ts` (`API_BASE_URL`). All endpoints require a
 | PUT | `/profile` | Update display name |
 | GET | `/health` | Health check |
 
-Full spec: `Swagger/swaggerjson.json`
+Full spec: `Swagger/swagger.json`
 
 ## Key Decisions
 
