@@ -34,3 +34,23 @@ export type Friend = {
 };
 
 export type FriendsListResponse = Friend[];
+
+// ─── Signals ──────────────────────────────────────────────────────────────────
+
+export interface SendSignalRequest {
+  message: string | null;
+  barName: string | null;
+  /** null = broadcast to all friends */
+  friendIds: string[] | null;
+}
+
+export interface Signal {
+  id: string;
+  senderId: string;
+  senderName: string | null;
+  message: string | null;
+  barName: string | null;
+  sentAt: string; // ISO 8601
+}
+
+export type SignalsListResponse = Signal[];

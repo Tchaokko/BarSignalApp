@@ -80,7 +80,7 @@ Base URL is set in `src/api/client.ts` (`API_BASE_URL`). All endpoints require a
 | PUT | `/profile` | Update display name |
 | GET | `/health` | Health check |
 
-Full spec: `Swagger/swaggerjson.json`
+Full spec: `Swagger/swagger.json`
 
 ## Key Decisions
 
